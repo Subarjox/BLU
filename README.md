@@ -11,7 +11,7 @@
 ![ESP32](https://img.shields.io/badge/ESP32-IoT-E7352C?logo=espressif&logoColor=white)
 ![Status](https://img.shields.io/badge/status-final%20project-orange)
 
-![BLU overview](docs/overview-collage.png)
+![BLU overview](docs/web_ui.png)
 
 </div>
 
@@ -47,7 +47,7 @@ BLU is a water quality monitoring system built as a **final project for the Web 
 
 ## How It Works
 
-![BLU system architecture](docs/system-architecture.png)
+![BLU system architecture](docs/test_connect.png)
 
 1. **Sense.** Probes placed in a water sample measure TDS, turbidity, and pH.
 2. **Transmit.** The ESP32-based device sends readings to the BLU backend. [FILL: protocol, e.g. HTTP / MQTT / Firebase]
@@ -75,7 +75,7 @@ BLU is a water quality monitoring system built as a **final project for the Web 
 
 ### Responsive web dashboard
 
-![Responsive dashboard on phone and tablet](docs/responsive-preview.png)
+![Responsive dashboard on phone and tablet](docs/mobile_ver.png)
 
 ### Dashboard pages
 
@@ -120,7 +120,7 @@ The prototype is a sensor box with LED indicators, connected to probes placed in
 
 A companion mobile app lets users pair a device, view its status, and save water readings.
 
-![BLU mobile app screens](docs/mobile-app.png)
+![BLU mobile app screens](docs/mobile_ui.png)
 
 | Screen | Purpose |
 |---|---|
