@@ -92,7 +92,7 @@ Households that rely on well or refill water and have no easy way to check it ca
 
 The prototype is a sensor box with LED indicators, connected to probes placed in the water sample.
 
-(docs/pengujian.png)
+![BLU pengujian](docs/pengujian.png)
 
 **Components** 
 
