@@ -41,7 +41,7 @@
 
 BLU is a water quality monitoring system built as a **final project for the Web Programming course (Group 10)**. A sensor device measures three water parameters, **TDS**, **turbidity**, and **pH**, and sends them to a web dashboard and a mobile app. A fuzzy-logic analysis then classifies the water so users can understand the result without reading raw sensor numbers.
 
-[FILL: 1-2 sentences on the problem BLU addresses and the target users. Example: "Households that rely on well or refill water and have no easy way to check it."]
+Households that rely on well or refill water and have no easy way to check it can use BLU to monitor the quality of their water. Furthermore, BLU was created to resolve confusion regarding which water standards should be applied. BLU utilizes two global standards, which are integrated using a fuzzy logic approach. 
 
 ---
 
@@ -50,7 +50,7 @@ BLU is a water quality monitoring system built as a **final project for the Web 
 ![BLU system architecture](docs/test_connect.png)
 
 1. **Sense.** Probes placed in a water sample measure TDS, turbidity, and pH.
-2. **Transmit.** The ESP32-based device sends readings to the BLU backend. [FILL: protocol, e.g. HTTP / MQTT / Firebase]
+2. **Transmit.** The ESP32-based device sends readings to the BLU backend via HTTP.
 3. **Analyze.** The fuzzy logic engine produces a quality category and a crisp score.
 4. **Display.** Results appear on the web dashboard and in the mobile app.
 5. **Save.** Users can store a reading with a name and description for later comparison.
@@ -67,8 +67,7 @@ BLU is a water quality monitoring system built as a **final project for the Web 
 - **Usage guide**: built-in FAQ explaining how to save data and read results.
 - **User accounts**: login, profile, and logout.
 - **Responsive UI**: works on desktop, tablet, and phone.
-- **Physical LED indicators** on the device (red / yellow / green). [FILL: what each color means]
-
+- **Physical LED indicators** on the device (red / yellow / green). Red means Dangerous, Yellow means Warning / Potentially Dangerous and Green means Good.
 ---
 
 ## Screenshots
@@ -93,26 +92,17 @@ BLU is a water quality monitoring system built as a **final project for the Web 
 
 The prototype is a sensor box with LED indicators, connected to probes placed in the water sample.
 
-| Clear water | Dark liquid |
-|---|---|
-| ![Prototype measuring clear water](docs/hardware-clear-water.png) | ![Prototype measuring dark liquid](docs/hardware-dark-liquid.png) |
-| [Screenshot: dashboard reading for clear water] | [Screenshot: dashboard reading for dark liquid] |
+(docs/pengujian.png)
 
-[Video: prototype reacting when switched from clear water to dark liquid]
-
-**Components** [FILL: exact models]
+**Components** 
 
 | Part | Model |
 |---|---|
-| Microcontroller | ESP32 [VERIFY] |
-| TDS sensor | [FILL] |
-| Turbidity sensor | [FILL] |
-| pH sensor | [FILL] |
+| Microcontroller | ESP32 |
+| TDS sensor |
+| Turbidity sensor |
+| pH sensor | 
 | Indicators | 3 LEDs (red, yellow, green) |
-
-**Wiring:** [FILL: pin mapping, or link to a wiring diagram]
-
-**Firmware:** [FILL: link to firmware repo or folder]
 
 ---
 
@@ -129,7 +119,7 @@ A companion mobile app lets users pair a device, view its status, and save water
 | Save water | Pick TDS / pH / turbidity / AI result, then add a name and description |
 | Profile | View account details, update profile, log out |
 
-[FILL: mobile app repository link and framework. The UI looks like Flutter, please verify.]
+BLU Mobile Version : https://github.com/Subarjox/BLU-Mobile
 
 ---
 
@@ -137,15 +127,15 @@ A companion mobile app lets users pair a device, view its status, and save water
 
 The "AI Analysis" card on the dashboard is produced by a fuzzy inference process that turns TDS, turbidity, and pH into a single quality category and a crisp (defuzzified) score.
 
-[FILL: input variables and ranges]
+**Input variables and ranges**: Two variables, WAWQI and IKA. Both operate on a universe of discourse (range) from 0 to 100.
 
-[FILL: membership functions, e.g. triangular / trapezoidal]
+**Membership functions**: Uses a combination of Trapezoidal (trapmf) for the extreme boundary sets (like 'excellent' or 'sangat_baik') and Triangular (trimf) for the intermediate sets (like 'good', 'buruk').
 
-[FILL: rule base, e.g. number of rules and an example rule]
+**Rule base**: There are exactly 20 explicit rules. Example rule: IF WAWQI is 'excellent' AND IKA is 'sangat_buruk' THEN Hasil is 'bahaya'.
 
-[FILL: inference and defuzzification method, e.g. Mamdani + centroid]
+**Inference and defuzzification method**: The system uses Mamdani inference with Centroid defuzzification (which is the default mathematical method used by the skfuzzy.control module when compute() is executed).
 
-[FILL: output categories and their score ranges]
+**Output categories and their score ranges**: aman (safe, score > 70), hati-hati (caution, score 51 - 70), and bahaya (danger, score <= 50).
 
 The implementation lives in [`fuzzy/`](fuzzy/).
 
@@ -155,13 +145,13 @@ The implementation lives in [`fuzzy/`](fuzzy/).
 
 | Layer | Technology |
 |---|---|
-| Web backend | PHP [FILL: version] |
-| Database | [FILL: MySQL / MariaDB] |
+| Web backend | PHP 8.0 |
+| Database | MySQL |
 | Web frontend | HTML, CSS, JavaScript, Bootstrap 5 |
 | UI template | [Argon Dashboard](https://github.com/creativetimofficial/argon-dashboard) v2.1.0 by Creative Tim |
 | Build tools | Gulp 5, Sass |
-| IoT device | ESP32 [VERIFY], TDS + turbidity + pH sensors |
-| Mobile app | [FILL: Flutter / other] |
+| IoT device | ESP32, TDS + turbidity + pH sensors |
+| Mobile app |Flutter |
 | CI | GitHub Actions (`.github/workflows`) |
 
 ---
@@ -170,10 +160,10 @@ The implementation lives in [`fuzzy/`](fuzzy/).
 
 ```
 BLU/
-├── .github/workflows/   # [FILL: what the workflow does]
+├── .github/workflows/   # 
 ├── assets/              # CSS, JS, images, fonts (Argon base + BLU assets)
-├── classes/             # [FILL: PHP classes, e.g. DB connection, models, helpers]
-├── database/            # [FILL: .sql files / database schema]
+├── classes/             # PHP classes, e.g. DB connection, models, helpers
+├── database/            # .sql files / database schema
 ├── docs/                # Documentation images (and reports, if any)
 ├── fuzzy/               # Fuzzy logic implementation
 ├── pages/               # Application pages
@@ -190,8 +180,8 @@ BLU/
 
 ### Prerequisites
 
-- PHP [FILL: minimum version]
-- [FILL: MySQL / MariaDB]
+- PHP 8.0
+- MySQL
 - A local web server (XAMPP, Laragon, etc.)
 - Node.js and npm (optional, only needed to rebuild SCSS with Gulp)
 - The BLU sensor device, if you want live readings
@@ -208,13 +198,13 @@ BLU/
    cd blu
    ```
 
-2. Import the database. [VERIFY: SQL file name inside `database/`]
+2. Import the database.
 
    ```bash
-   mysql -u root -p your_database < database/[FILL: file_name].sql
+   mysql -u root -p your_database blu2.sql
    ```
 
-3. Configure the database connection. [FILL: which file and variables to edit, e.g. in `classes/...`]
+3. Configure the database connection. 
 
 4. (Optional) Install front-end dependencies:
 
@@ -229,18 +219,6 @@ BLU/
    ```
 
    You will be redirected automatically to `http://localhost/blu/pages`.
-
-### Database configuration
-
-| Parameter | Default value |
-|---|---|
-| Host | [FILL] |
-| User | [FILL] |
-| Password | [FILL] |
-| Database name | [FILL] |
-
-[FILL: demo account for login, if any. Never put production credentials in a README.]
-
 ---
 
 ## Usage
@@ -264,10 +242,7 @@ BLU is an academic prototype built with low-cost sensors. Readings depend on sen
 
 **Muhamad Fahreza**, software development
 
-- GitHub: [FILL: @username]
-- [FILL: LinkedIn / email, optional]
-
-[FILL: university, course, lecturer, academic year]
+- GitHub: @Subarjox
 
 ---
 
