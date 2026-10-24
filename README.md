@@ -9,7 +9,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5-7952B3?logo=bootstrap&logoColor=white)
 ![Status](https://img.shields.io/badge/status-final%20project-orange)
 
- ![Hero demo](docs/hero.gif)
+ ![Hero demo](docs/logo.png)
 
 </div>
 
