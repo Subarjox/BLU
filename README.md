@@ -77,15 +77,6 @@ Households that rely on well or refill water and have no easy way to check it ca
 ![Responsive dashboard on phone and tablet](docs/mobile_ver.png)
 
 ### Dashboard pages
-
-| Page | Preview |
-|---|---|
-| Login | [Screenshot of login page] |
-| Water quality dashboard | [Screenshot of dashboard with realistic readings] |
-| Saved water list | [Screenshot of saved water list] |
-| Device settings | [Screenshot of device settings page] |
-| Usage guide | [Screenshot of usage guide page] |
-
 ---
 
 ## Hardware Prototype
@@ -99,7 +90,7 @@ The prototype is a sensor box with LED indicators, connected to probes placed in
 | Part | Model |
 |---|---|
 | Microcontroller | ESP32 |
-| TDS sensor |
+| TDS sensor | 
 | Turbidity sensor |
 | pH sensor | 
 | Indicators | 3 LEDs (red, yellow, green) |
