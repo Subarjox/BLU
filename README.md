@@ -75,8 +75,6 @@ Households that rely on well or refill water and have no easy way to check it ca
 ### Responsive web dashboard
 
 ![Responsive dashboard on phone and tablet](docs/mobile_ver.png)
-
-### Dashboard pages
 ---
 
 ## Hardware Prototype
